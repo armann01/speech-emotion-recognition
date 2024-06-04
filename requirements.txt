@@ -5,6 +5,6 @@ Flask==3.0.3
 librosa==0.10.2.post1
 numpy==1.26.4
 Pillow==10.3.0
-torch==2.2.2
-torchvision==0.17.2
+torch==2.2.2+cpu
+torchvision==0.17.2+cpu
 transformers==4.41.0
