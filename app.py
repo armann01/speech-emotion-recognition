@@ -28,18 +28,24 @@ model_path = 'models/VIT_model.pth'
 if not os.path.exists(os.path.dirname(model_path)):
     os.makedirs(os.path.dirname(model_path))
 
+# Check for AWS credentials in environment variables
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+
+if not aws_access_key_id or not aws_secret_access_key:
+    raise ValueError("AWS credentials not found. Please set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.")
+
 # Download model from S3
-s3 = boto3.client('s3', aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
-                  aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'))
-s3.download_file('vit-model123', 'VIT_model.pth', model_path)
+s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+s3.download_file('your-bucket-name', 'path/to/VIT_model.pth', model_path)
 
 # Load your trained model
 model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
 model.num_labels = len(label_mapping)
 model.classifier = torch.nn.Linear(model.classifier.in_features, model.num_labels)
-model.load_state_dict(torch.load(model_path))
+model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
 model.eval()
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cpu')
 model.to(device)
 
 @app.route('/predict', methods=['POST'])
