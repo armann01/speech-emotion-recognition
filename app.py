@@ -37,7 +37,7 @@ if not aws_access_key_id or not aws_secret_access_key:
 
 # Download model from S3
 s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
-s3.download_file('your-bucket-name', 'path/to/VIT_model.pth', model_path)
+s3.download_file('vit-model123', 'VIT_model.pth', model_path)
 
 # Load your trained model
 model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
