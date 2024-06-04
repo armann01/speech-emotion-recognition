@@ -5,5 +5,7 @@ numpy==1.26.4
 Pillow==10.3.0
 transformers==4.41.0
 
-torch @ https://download.pytorch.org/whl/cpu
-torchvision @ https://download.pytorch.org/whl/cpu
+torch @ https://download.pytorch.org/whl/cpu/torch-2.3.0%2Bcpu-cp39-cp39-linux_x86_64.whl#sha256=1e86e225e472392440ace378ba3165b5e87648e8b5fbf16adc41c0df881c38b8
+
+torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.16.2%2Bcpu-cp39-cp39-linux_x86_64.whl#sha256=39b3c549522bec7ca64e0cd6fbde56ddbc7ebc196f4b402b607d942e4b0a8632
+
