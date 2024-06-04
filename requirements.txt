@@ -1,7 +1,5 @@
 absl-py==2.1.0
 accelerate==0.30.1
-aiohttp @ file:///D:/bld/aiohttp_1713964989140/work
-aiosignal @ file:///home/conda/feedstock_root/build_artifacts/aiosignal_1667935791922/work
 anyio==4.3.0
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0
