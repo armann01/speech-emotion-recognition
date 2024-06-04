@@ -31,7 +31,7 @@ if not os.path.exists(os.path.dirname(model_path)):
 # Download model from S3
 s3 = boto3.client('s3', aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
                   aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'))
-s3.download_file('your-bucket-name', 'path/to/VIT_model.pth', model_path)
+s3.download_file('vit-model123', 'VIT_model.pth', model_path)
 
 # Load your trained model
 model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
